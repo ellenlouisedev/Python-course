@@ -8,16 +8,20 @@
 nome = input('Digite o nome: ')
 cpf = input('Digite o CPF: ')
 
+print(f'Cadastrado o cliente: {nome} e CPF: {cpf}')
+
 cliente = [nome, cpf]
 clientes = [cliente]
 
 nome = input('Digite o nome: ')
 cpf = input('Digite o CPF: ')
 
+print(f'Cadastrado o cliente: {nome} e CPF: {cpf}')
+
 cliente = [nome, cpf]
 clientes.append(cliente)
 
-print('-----------------')
+print('--------------------')
 
 print("Clientes cadastrados: ")
 print(f"Nome: {clientes[0][0]}")
@@ -25,4 +29,4 @@ print(f"CPF: {clientes[0][1]}")
 print(f"Nome: {clientes[1][0]}")
 print(f"CPF: {clientes[1][1]}")
 
-print('-----------------')
+print('--------------------')
