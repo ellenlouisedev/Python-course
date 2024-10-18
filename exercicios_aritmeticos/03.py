@@ -1,3 +1,6 @@
+'''
+Faça um algoritmo para ler um número inteiro e dizer se o número lido é par ou impar.
+'''
 x = int(input("Digite o primeiro número : "))
 y = int(input("Digite o segundo número: "))
 

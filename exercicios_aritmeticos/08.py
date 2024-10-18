@@ -1,3 +1,6 @@
+'''
+Faça um algoritmo para ler três números e imprimir se estes podem ou não formar um triângulo.
+'''
 x = int(input("Digite o primeiro número: "))
 y = int(input("Digete o segundo número: "))
 z = int(input("Digite o terceiro número: "))

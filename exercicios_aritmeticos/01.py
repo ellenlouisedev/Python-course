@@ -1,3 +1,6 @@
+'''
+Faça um algoritmo para ler dois números e imprimir a soma dos números lidos
+'''
 x = int(input("Digite o primeiro número"))
 y = int(input("Digite o segundo número"))
 

@@ -1,3 +1,7 @@
+'''
+Faça um algoritmo para ler três números e se estes poderem formar um triângulo dizer se o triângulo é “Equilátero”, “Isóceles” OU “Escaleno”.
+'''
+
 x = int(input("Digite o primeiro número: "))
 y = int(input("Digite o segundo número: "))
 z = int(input("Digite o terceiro número: "))
