@@ -9,6 +9,6 @@ soma = x + y + z
 media = soma / 3
 produto = x * y * z
 
-print ("A soma é: {soma}")
-print ("A média é: {média}")
-print ("O produto é: {produto}")
+print ("A soma dos números é: {soma}")
+print ("A média dos números é: {média}")
+print ("O produto dos números é: {produto}")

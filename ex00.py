@@ -1,4 +1,4 @@
-age = 19
+age  = 19
 name = "Ellen"
 
 print (f'meu nome é {name} e eu tenho {age} anos de idade')
