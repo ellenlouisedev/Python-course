@@ -5,7 +5,7 @@ saldo_inicial = 1000
 saldo = saldo_inicial
 saque = float(input("Digite o valor do saque: "))
 
-if saque <= saldo_inicial:
+if saque <= saldo:
     print ("Saque realizado com sucesso!")
     saldo = saldo_inicial - saque
     
