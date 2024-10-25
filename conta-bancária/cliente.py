@@ -5,28 +5,22 @@
 3 - Criar uma lista para salvar os dados do cliente
 '''
 
-nome = input('Digite o nome: ')
-cpf = input('Digite o CPF: ')
+nome = input("Digite o nome: ")
+cpf = input("Digite o CPF: ")
+dnasc = input("Digite a data da nascimento: ")
+tel = input("Digite o telefone: ")
 
-print(f'Cadastrado o cliente: {nome} e CPF: {cpf}')
+print(f"\nCadastro concluído com sucesso.")
 
-cliente = [nome, cpf]
+cliente = [nome, cpf, dnasc, tel]
 clientes = [cliente]
 
-nome = input('Digite o nome: ')
-cpf = input('Digite o CPF: ')
+print('----------------------------------------')
 
-print(f'Cadastrado o cliente: {nome} e CPF: {cpf}')
-
-cliente = [nome, cpf]
-clientes.append(cliente)
-
-print('--------------------')
-
-print("Clientes cadastrados: ")
+print("Dados do cliente cadastrado: ")
 print(f"Nome: {clientes[0][0]}")
 print(f"CPF: {clientes[0][1]}")
-print(f"Nome: {clientes[1][0]}")
-print(f"CPF: {clientes[1][1]}")
+print(f"Nome: {clientes[0][2]}")
+print(f"CPF: {clientes[0][3]}")
 
-print('--------------------')
+print('----------------------------------------')

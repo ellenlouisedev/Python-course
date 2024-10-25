@@ -1,7 +1,12 @@
 '''
 Receba o valor do saque e compare com o saldo da conta bancária
 '''
+
 saldo_inicial = 1000
+print('---------------------------------------------')
+print (f"Você tem R$ {saldo_inicial} de saldo na conta bancária.")
+print('---------------------------------------------')
+
 saldo = saldo_inicial
 saque = float(input("Digite o valor do saque: "))
 
