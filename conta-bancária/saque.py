@@ -18,3 +18,4 @@ else:
     print ("Saldo insuficiente!")
     
 print (f"Saldo atual: {saldo}")
+print('---------------------------------------------')
