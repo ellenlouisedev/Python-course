@@ -2,17 +2,19 @@
 
 texto = input("Informe um texto: ")
 vogais = 0
+vogais_encontradas = ""
+
+# Conjunto de vogais (tanto minúsculas quanto maiúsculas)
+vogais_string = "aeiouAEIOU"
 
 for letra in texto:
-    if letra in "aeiou":
+    if letra in vogais_string:
         vogais += 1
+        vogais_encontradas += letra
+
 print(f"O texto informado possui {vogais} vogais.")
 
-VOGAIS = "AEIOU"
-print("As vogais encontradas são: ")
-for letra in texto:
-     if letra.upper() in VOGAIS:
-        print(letra, end="")
-        
-else: 
+if vogais_encontradas:
+    print("As vogais encontradas são:", vogais_encontradas)
+else:
     print("Nenhuma vogal encontrada.")
