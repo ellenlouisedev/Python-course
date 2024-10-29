@@ -19,7 +19,7 @@ def menu():
 
 def escolher_opcao():
     while True:
-        opcao = int(input("Digite sua opção"))
+        opcao = int(input("Digite sua opção: "))
         match(opcao):
             case 1:
                 cadastrar_aluno()
@@ -39,22 +39,31 @@ def cadastrar_aluno():
         matricula = input("Digite a matrícula do aluno: ")
         curso = input("Digite o curso do aluno: ")
         data_nascimento = input("Digite a data de nascimento do aluno (dd/mm/yyyy): ")
-        print(f"Aluno {aluno} cadastrado com sucesso!")
+        print(f"\nAluno {aluno} cadastrado com sucesso!")
         alunos[matricula] = {"nome": aluno, "curso": curso, "data_nascimento": data_nascimento}
         return alunos
 
 def consultar_aluno():
     # Buscar um aluno por matrícula e exibir seus dados completos.
-        buscar_matricula = input("Digite a matrícula do aluno que deseja consultar: ")
+        buscar_matricula = input("Digite a matrícula do aluno que deseja consultar: \n")
         if buscar_matricula in alunos:
             aluno_encontrado = alunos[buscar_matricula]
             print(f"Aluno encontrado: {aluno_encontrado['nome']}")
             print(f"Matrícula: {buscar_matricula}")
+            print(f"Curso: {aluno_encontrado['curso']}")
+            print(f"Data de Nascimento: {aluno_encontrado['data_nascimento']}")
+
         else :
             print("Aluno não encontrado!")
 
 def excluir_aluno():
-    # TODO
+    # Excluir um aluno por matrícula.
+    excluir_matricula = input("Digite a matrícula do aluno que deseja excluir: ")
+    if excluir_matricula in alunos:
+        del alunos[excluir_matricula]
+        print(f"Aluno com matrícula {excluir_matricula} excluído com sucesso!")
+    else:   
+        print("Aluno não encontrado!")
     pass
 
 
