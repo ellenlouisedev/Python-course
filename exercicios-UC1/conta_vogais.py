@@ -15,4 +15,4 @@ print(f"O texto informado possui {vogais} vogais.")
 if vogais_encontradas:
     print("As vogais encontradas são:", vogais_encontradas)
 else:
-    print("Nenhuma vogal encontrada."
+    print("Nenhuma vogal encontrada.")

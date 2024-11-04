@@ -2,8 +2,8 @@ lista_compras = []
 valor_total = 0
 
 while True:
-    produto = input("Digite o nome do produto (ou 'fim' para encerrar):")
-    if produto.lower() == 'fim':
+    produto = input("Digite o nome do produto (ou 'sair' para encerrar):")
+    if produto.lower() == 'sair':
         break
     valor = float(input("Digite o valor do produto: "))
     lista_compras.append((produto, valor))
