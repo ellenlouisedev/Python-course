@@ -9,8 +9,8 @@ janela.geometry("300x300")
 
 # Criação de um rótulo
 greeting = tk.Label(text="Usando a Interface Gráfica Tkinter",
-                    fg="white",  # Set the text color to white
-                    bg="black",  # Set the background color to black
+                    fg="white", 
+                    bg="black",
                     width=30,
                     height=5
                     )
