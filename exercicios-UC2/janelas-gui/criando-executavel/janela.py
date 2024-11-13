@@ -1,5 +1,3 @@
-# Criado a partir do tutorial https://realpython.com/python-gui-tkinter/
-
 import tkinter as tk
 
 # Criação da janela principal
@@ -8,7 +6,7 @@ janela.title("Minha Primeira Janela")
 janela.geometry("300x300")
 
 # Criação de um rótulo
-greeting = tk.Label(text="Usando a Interface Gráfica Tkinter",
+greeting = tk.Label(janela, text="Usando a Interface Gráfica Tkinter",
                     fg="white", 
                     bg="black",
                     width=30,
@@ -16,37 +14,36 @@ greeting = tk.Label(text="Usando a Interface Gráfica Tkinter",
                     )
 greeting.pack(pady=10)
 
-# label = tk.Label(janela, text="Olá, Tkinter!")
-# label.pack()
-
 # Criação de um botão
 button = tk.Button(janela,
                    text="Clique Aqui",
                    fg="yellow",
-                    bg="blue",
-                    width=15,
-                    height=2,
-                    command=lambda: greeting.config(text="Botão clicado!")
+                   bg="blue",
+                   width=15,
+                   height=2,
+                   command=lambda: greeting.config(text="Botão clicado!")
                    )
 button.pack(pady=10)
 
 # Adicionando uma entrada de texto
-entry = tk.Entry(fg="yellow", bg="blue", width=50)
+entry = tk.Entry(janela, fg="yellow", bg="blue", width=50)
 entry.pack(pady=10)
 
-button2 = tk.Button(text="Escreva algo e clique no botão",
+# Botão que altera o texto do rótulo com o texto da entrada
+button2 = tk.Button(janela, text="Escreva algo e clique no botão",
                     command=lambda: greeting.config(text=entry.get()),
                     fg="yellow",
                     bg="blue",
                    )
 button2.pack(pady=10)
- 
-button3 = tk.Button(text="Apagar",
+
+# Botão que apaga o texto do rótulo
+button3 = tk.Button(janela, text="Apagar",
                     command=lambda: greeting.config(text=""),
                     fg="yellow",
                     bg="blue",
                    )
 button3.pack(pady=10)
- 
+
 # Iniciando o loop principal
 janela.mainloop()
