@@ -4,10 +4,10 @@ import sqlite3
 
 # Função para conectar ao banco de dados SQLite
 def conectar_bd():
-    conn = sqlite3.connect('escola.db')  # Conecta ao banco de dados (ou cria um novo)
+    conn = sqlite3.connect('escola.db') # Conecta ao banco de dados
     return conn
 
-# Função para criar a tabela de alunos no banco de dados (se não existir)
+# Função para criar a tabela de alunos no banco de dados
 def criar_tabela():
     conn = conectar_bd()
     cursor = conn.cursor()
@@ -60,7 +60,7 @@ def excluir_aluno(matricula):
     conn.commit()
     conn.close()
 
-# Função para mostrar os alunos cadastrados em um popup
+# Função para mostrar os alunos cadastrados
 def exibir_lista_alunos():
     alunos = listar_alunos()
     if not alunos:
@@ -104,11 +104,11 @@ def on_excluir():
     else:
         messagebox.showerror("Erro", "Aluno não encontrado.")
 
-# Configuração da interface gráfica com Tkinter
+# Interface gráfica com Tkinter
 root = tk.Tk()
 root.title("Sistema de Cadastro de Alunos")
 
-# Frame de Cadastro
+# Cadastro
 frame_cadastro = tk.Frame(root)
 frame_cadastro.pack(padx=10, pady=10)
 
@@ -135,7 +135,7 @@ entry_data_nascimento.grid(row=3, column=1)
 btn_cadastrar = tk.Button(frame_cadastro, text="Cadastrar Aluno", command=on_cadastrar)
 btn_cadastrar.grid(row=4, column=0, columnspan=2)
 
-# Frame de Consulta
+# Consulta
 frame_consulta = tk.Frame(root)
 frame_consulta.pack(padx=10, pady=10)
 
@@ -147,7 +147,7 @@ entry_consulta_matricula.grid(row=0, column=1)
 btn_consultar = tk.Button(frame_consulta, text="Consultar Aluno", command=on_consultar)
 btn_consultar.grid(row=1, column=0, columnspan=2)
 
-# Frame de Exclusão
+# Exclusão
 frame_exclusao = tk.Frame(root)
 frame_exclusao.pack(padx=10, pady=10)
 
