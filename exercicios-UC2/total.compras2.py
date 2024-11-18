@@ -1,65 +1,80 @@
-import sqlite3
-from pathlib import Path
-import tkinter as tk
-from tkinter import messagebox
+'''
+Nova fase criando a lista de produtos (CRUD):
+- [X] Criar uma lista de produtos e salvar em arquivo txt
+- [X] Carregar a lista de produtos de um arquivo txt;
+- [ ] Atualizar a lista adicionando novos produtos;
+- [ ] Deletar um produto da lista
+'''
 
-# Caminho do banco de dados
-ROOT_PATH = Path(__file__).parent
-data_path = ROOT_PATH / 'data'
+produtos = {'Arroz': 5.90, 
+            'Macarrão': 3.60,
+            'Feijão': 8.50,
+            'Carne': 50.90,
+            'Frango':20.00,}
 
-# Função para conectar ao banco de dados
-def conectar_bd():
-    return sqlite3.connect(data_path / 'banco_de_dados.db')
+carrinho = []
 
-# Função para inserir dados no banco
-def inserir_cliente(nome, email):
+def mostrar_produtos():
+    print('Produtos Disponíveis:')
+    for produto, valor in produtos.items():
+        print(f"{produto}: R$ {valor}")
+
+def adicionar_produto(total_compras):
+    adicione = input("Digite o nome do produto: ")
+    if adicione in produtos:
+        carrinho.append(adicione) #adiciona o produto ao carrinho
+        total_compras += produtos[adicione] #soma o valor dos produtos adicionados
+        print(f'{adicione} adicionado ao carrinho. Total até o momento: R$ {total_compras}')
+    else:
+        print("Produto não encontrado. Tente novamente.")
+    return carrinho, total_compras
+
+def mostrar_menu():
+    total_compras = 0.0
+    menu = """
+    Escolha uma opção dos produtos: 
+    [m] Mostrar [a] Adicionar [c] Carrinho
+    [s] salvar  [l] ler o carrinho de compras
+    f -(Finalizar Compra)
+    """
+    while True:
+        opcao = input(menu)
+        if opcao == 'm':
+            mostrar_produtos()
+        elif opcao == 'a':
+            carrinho, total_compras = adicionar_produto(total_compras)
+        elif opcao == 'c':
+            print("Produtos no carrinho:")
+            for produto in carrinho:
+                print(produto)
+        elif opcao == 's':
+            salvar_lista(carrinho, total_compras)
+            print("Lista salva com sucesso!")
+        elif opcao == 'l':
+            carrinho, total_compras = carregar_lista()
+            print("Lista carregada com sucesso!")
+        elif opcao == 'f':
+            print("\nProdutos escolhidos:", ', '.join(carrinho))      
+            print(f"Total da compra: R$ {total_compras}")
+            break
+
+def salvar_lista(carrinho, total_compras):
+    with open("Exercicios-uc2/lista_compras.txt", "w", encoding="utf-8") as arquivo:
+        arquivo.write(f"Produtos escolhidos: {', '.join(carrinho)}\n")
+        arquivo.write(f"Total da compra: R$ {total_compras}")
+
+def carregar_lista():
     try:
-        conexao = conectar_bd()
-        cursor = conexao.cursor()
-        cursor.execute("INSERT INTO clientes (nome, email) VALUES (?, ?)", (nome, email))
-        conexao.commit()
-        conexao.close()
-        messagebox.showinfo("Sucesso", "Cadastro realizado com sucesso!")
-        limpar_campos()
-    except Exception as e:
-        messagebox.showerror("Erro", f"Erro ao inserir dados: {e}")
+        with open("Exercicios-uc2/lista_compras.txt", "r", encoding="utf-8") as arquivo:
+            linhas = arquivo.readlines()
+            carrinho = linhas[0].split(": ")[1].split(", ")
+            total_compras = float(linhas[1].split(": R$ ")[1])
+            return carrinho, total_compras
+    except FileNotFoundError:
+        print("Arquivo não encontrado")
+        return [], 0.0
+    except IOError:
+        print("Erro ao ler o arquivo")
+        return [], 0.0
 
-# Função para limpar os campos de entrada
-def limpar_campos():
-    nome_entry.delete(0, tk.END)
-    email_entry.delete(0, tk.END)
-
-# Função chamada ao clicar no botão "Cadastrar"
-def cadastrar_cliente():
-    nome = nome_entry.get()
-    email = email_entry.get()
-
-    if not nome or not email:
-        messagebox.showwarning("Campos vazios", "Preencha todos os campos.")
-        return
-
-    inserir_cliente(nome, email)
-
-# Criar a janela principal
-root = tk.Tk()
-root.title("Cadastro de Clientes")
-root.geometry("300x200")
-
-# Label e campo para o nome
-nome_label = tk.Label(root, text="Nome:")
-nome_label.pack(pady=5)
-nome_entry = tk.Entry(root, width=30)
-nome_entry.pack(pady=5)
-
-# Label e campo para o email
-email_label = tk.Label(root, text="Email:")
-email_label.pack(pady=5)
-email_entry = tk.Entry(root, width=30)
-email_entry.pack(pady=5)
-
-# Botão para cadastrar cliente
-cadastrar_button = tk.Button(root, text="Cadastrar", command=cadastrar_cliente)
-cadastrar_button.pack(pady=10)
-
-# Rodar a interface gráfica
-root.mainloop()
+mostrar_menu()
